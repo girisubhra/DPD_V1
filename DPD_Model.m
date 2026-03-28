@@ -13,23 +13,28 @@ Output_IComp=readmatrix('D:\PhD_DPD_Project\DPD_V1\Input_I.xlsx');
 Output_QComp=readmatrix('D:\PhD_DPD_Project\DPD_V1\Input_Q.xlsx');
 Yact=Output_IComp(:,1)+1j*Output_QComp(:,1);
 
+
+Gain= 7.08;
+Xact=Xact/Gain;
+
 %-----------------------------GMP model----------------------------%
 
 for ii=1:length(Xact)
     trainsamp(ii)=500+ii;%start from 500 samples
 end
 
-Ka=5;
-La=3;
-
-Kb=3;
-Lb=3;
-
-Mb=2;
-Kc=3;
-
-Lc=3;
-Mc=2;
+% Ka=5;
+% La=3;
+% 
+% Kb=3;
+% Lb=3;
+% 
+% Mb=2;
+% Kc=3;
+% 
+% Lc=3;
+% Mc=2;
+Ka=7;La=5;Kb=5;Lb=3;Mb=3;Kc=5;Lc=3;Mc=3;%ncoef=168
 ncoef=((Ka+1)*(La+1))+(Kb*(Lb+1)*Mb)+(Kc*(Lc+1)*Mc);
 
 nmodel=12000; % No of samples used for modeling
